@@ -45,6 +45,7 @@ const getEmployees = () => {
   axios.get('https://reqres.in/api/users')
   .then(res => {
     setEmployees(res.data.data)
+    console.log(res)
   })
   .catch(err =>{
     console.log(err)
@@ -88,6 +89,7 @@ const inputChange = (name,value) => {
 }
 
 const checkboxChange = (name, isChecked) => {
+  setDisabled(!isChecked)
   setFormValues({
     ...formValues,
     terms: {
@@ -114,7 +116,7 @@ useEffect( () => {
 useEffect( () => {
   formSchema.isValid(formValues)
   .then(valid => {
-    setDisabled(!valid)
+    
   },[formValues])
 })
 
